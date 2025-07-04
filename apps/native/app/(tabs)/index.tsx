@@ -1,5 +1,3 @@
-import { api } from "@filmz/backend/convex/_generated/api";
-import { useQuery } from "convex/react";
 import { useRouter } from "expo-router";
 import { Image, ScrollView, View } from "react-native";
 import SearchBar from "@/components/search-bar";
@@ -8,7 +6,6 @@ import { images } from "@/constants/images";
 
 const index = () => {
 	const router = useRouter();
-	const movies = useQuery(api.movies.list, { query: "" });
 
 	return (
 		<View className="flex-1 bg-dark">
