@@ -16,7 +16,9 @@
 		"dev:server": "turbo -F @filmz/backend dev",
 		"dev:setup": "turbo -F @filmz/backend dev:setup"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@clerk/clerk-expo": "^2.14.2"
+	},
 	"devDependencies": {
 		"turbo": "^2.5.4",
 		"@biomejs/biome": "^2.0.0",
