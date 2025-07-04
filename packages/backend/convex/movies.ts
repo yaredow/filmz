@@ -2,7 +2,7 @@ import { v } from "convex/values";
 import { query } from "./_generated/server";
 import { TMDB_CONFIG } from "./constants";
 
-export const movies = query({
+export const list = query({
 	args: { query: v.string() },
 	handler: async (_, args) => {
 		const endpoint = args.query
