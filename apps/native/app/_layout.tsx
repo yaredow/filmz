@@ -1,4 +1,4 @@
-import { Stack } from "expo-router";
+import { Redirect, Stack } from "expo-router";
 import "../global.css";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { ConvexReactClient } from "convex/react";

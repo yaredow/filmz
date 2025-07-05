@@ -1,4 +1,5 @@
-import { Tabs } from "expo-router";
+import { useAuth } from "@clerk/clerk-expo";
+import { Redirect, Tabs } from "expo-router";
 import type { ImageSourcePropType } from "react-native";
 import { Image, ImageBackground, Text, View } from "react-native";
 import { images } from "@/constants/images";
@@ -30,6 +31,12 @@ const TabIcon = ({ focused, name, icon }: TabIconProps) => {
 };
 
 const _layout = () => {
+	const { isSignedIn } = useAuth();
+
+	if (!isSignedIn) {
+		return <Redirect href="/(auth)/sign-in" />;
+	}
+
 	return (
 		<Tabs
 			screenOptions={{
