@@ -15,7 +15,6 @@ import type {
 } from "convex/server";
 import type * as constants from "../constants.js";
 import type * as healthCheck from "../healthCheck.js";
-import type * as movies from "../movies.js";
 import type * as todos from "../todos.js";
 
 /**
@@ -29,7 +28,6 @@ import type * as todos from "../todos.js";
 declare const fullApi: ApiFromModules<{
 	constants: typeof constants;
 	healthCheck: typeof healthCheck;
-	movies: typeof movies;
 	todos: typeof todos;
 }>;
 export declare const api: FilterApi<
