@@ -1,5 +1,6 @@
 import { useRouter } from "expo-router";
 import { Image, ScrollView, View } from "react-native";
+
 import SearchBar from "@/components/search-bar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
