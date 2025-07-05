@@ -1,8 +1,10 @@
-import { Redirect, Stack } from "expo-router";
-import "../global.css";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { ConvexReactClient } from "convex/react";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
+import { Stack } from "expo-router";
+import Toast from "react-native-toast-message";
+
+import "../global.css";
 
 const convex = new ConvexReactClient(
 	process.env.EXPO_PUBLIC_CONVEX_URL as string,
@@ -17,6 +19,7 @@ export default function RootLayout() {
 					<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 					<Stack.Screen name="movies/[id]" options={{ headerShown: false }} />
 				</Stack>
+				<Toast />
 			</ConvexProviderWithClerk>
 		</ClerkProvider>
 	);

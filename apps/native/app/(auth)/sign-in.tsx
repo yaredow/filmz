@@ -1,12 +1,7 @@
-import React from "react";
-import { Text, View } from "react-native";
+import SignInForm from "@/components/auth/sign-in-form";
 
 const SignInScreen = () => {
-	return (
-		<View className="flex-1 items-center justify-center">
-			<Text>SignInScreen</Text>
-		</View>
-	);
+	return <SignInForm />;
 };
 
 export default SignInScreen;

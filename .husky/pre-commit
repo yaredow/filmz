@@ -1,5 +1,4 @@
-#!/bin/sh
-export PATH="/home/yada/.nvm/versions/node/v22.17.0/bin:$PATH"
-. "$(dirname "$0")/_/husky.sh"
+export PATH="$HOME/.nvm/versions/node/v22.17.0/bin:$PATH"
+
 
 lint-staged

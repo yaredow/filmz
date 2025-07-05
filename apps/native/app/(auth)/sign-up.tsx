@@ -1,12 +1,7 @@
-import React from "react";
-import { Text, View } from "react-native";
+import SignUpForm from "@/components/auth/sign-up-form";
 
 const SignUpScreen = () => {
-	return (
-		<View>
-			<Text>SignUpScreen</Text>
-		</View>
-	);
+	return <SignUpForm />;
 };
 
 export default SignUpScreen;

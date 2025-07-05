@@ -1,7 +1,6 @@
-import { useAuth } from "@clerk/clerk-expo";
 import { api } from "@filmz/backend/convex/_generated/api";
 import { useQuery } from "convex/react";
-import { Redirect, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { Image, ScrollView, View } from "react-native";
 import SearchBar from "@/components/search-bar";
 import { icons } from "@/constants/icons";
