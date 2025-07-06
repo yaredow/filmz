@@ -18,6 +18,8 @@ const SignInForm = () => {
 			onChange: signInSchema,
 		},
 		onSubmit: async ({ value }) => {
+			console.log(value);
+
 			if (!isLoaded) return;
 
 			try {
@@ -34,6 +36,7 @@ const SignInForm = () => {
 						type: "error",
 						text1: "Sign in failed",
 						text2: JSON.stringify(signInAttempt, null, 2),
+						position: "top",
 					});
 				}
 			} catch (error) {
@@ -74,7 +77,7 @@ const SignInForm = () => {
 							value={field.state.value}
 							onChangeText={field.handleChange}
 							autoCapitalize="none"
-							keyboardType="email-address"
+							keyboardType="visible-password"
 							className="mb-2 w-64 rounded border border-gray-300 p-2"
 						/>
 						{!field.state.meta.isValid && (
