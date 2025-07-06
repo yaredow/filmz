@@ -63,7 +63,7 @@ const SignUpForm = () => {
 			<form.Field name="lastName">
 				{(field) => (
 					<>
-						<Text>First Name:</Text>
+						<Text>Last Name:</Text>
 						<TextInput
 							value={field.state.value}
 							onChangeText={field.handleChange}
@@ -85,7 +85,7 @@ const SignUpForm = () => {
 			<form.Field name="email">
 				{(field) => (
 					<>
-						<Text>First Name:</Text>
+						<Text>Email:</Text>
 						<TextInput
 							value={field.state.value}
 							onChangeText={field.handleChange}
