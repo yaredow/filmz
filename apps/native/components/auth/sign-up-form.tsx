@@ -1,10 +1,12 @@
 import { useSignUp } from "@clerk/clerk-expo";
 import { useForm } from "@tanstack/react-form";
+import { useRouter } from "expo-router";
 import { Button, Text, TextInput, View } from "react-native";
 import { signUpSchema } from "@/schemas/auth.schema";
 
 const SignUpForm = () => {
 	const { isLoaded, signUp } = useSignUp();
+	const router = useRouter();
 
 	const form = useForm({
 		defaultValues: {
@@ -26,6 +28,8 @@ const SignUpForm = () => {
 				await signUp.prepareEmailAddressVerification({
 					strategy: "email_code",
 				});
+
+				router.replace("/");
 			} catch (error) {
 				console.error(JSON.stringify(error, null, 2));
 			}
