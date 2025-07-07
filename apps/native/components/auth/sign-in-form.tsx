@@ -1,8 +1,10 @@
 import { useSignIn } from "@clerk/clerk-expo";
 import { useForm } from "@tanstack/react-form";
 import { useRouter } from "expo-router";
-import { Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
+import twMerge from "tailwind-merge";
+import { cn } from "@/lib/utils";
 import { signInSchema } from "@/schemas/auth.schema";
 
 const SignInForm = () => {
@@ -68,7 +70,6 @@ const SignInForm = () => {
 					</>
 				)}
 			</form.Field>
-
 			<form.Field name="password">
 				{(field) => (
 					<>
@@ -95,11 +96,18 @@ const SignInForm = () => {
 				selector={(state) => [state.canSubmit, state.isSubmitting]}
 			>
 				{([canSubmit, isSubmitting]) => (
-					<Button
-						title={isSubmitting ? "Signing In..." : "Sign In"}
+					<TouchableOpacity
+						className={cn(
+							"items-center rounded-lg bg-blue-500 px-4 py-3",
+							(!canSubmit || isSubmitting) && "bg-gray-400",
+						)}
 						onPress={() => form.handleSubmit()}
 						disabled={!canSubmit || isSubmitting}
-					/>
+					>
+						<Text className="font-semibold text-white">
+							{isSubmitting ? "Signing In..." : "Sign In"}
+						</Text>
+					</TouchableOpacity>
 				)}
 			</form.Subscribe>
 		</View>
