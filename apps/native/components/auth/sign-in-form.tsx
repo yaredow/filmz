@@ -19,8 +19,6 @@ const SignInForm = () => {
 			onChange: signInSchema,
 		},
 		onSubmit: async ({ value }) => {
-			console.log(value);
-
 			if (!isLoaded) return;
 
 			try {
