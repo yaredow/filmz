@@ -1,9 +1,8 @@
 import { useSignIn } from "@clerk/clerk-expo";
 import { useForm } from "@tanstack/react-form";
 import { useRouter } from "expo-router";
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
-import twMerge from "tailwind-merge";
 import { cn } from "@/lib/utils";
 import { signInSchema } from "@/schemas/auth.schema";
 
@@ -29,6 +28,8 @@ const SignInForm = () => {
 					identifier: value.email,
 					password: value.password,
 				});
+
+				console.log(signInAttempt);
 
 				if (signInAttempt?.status === "complete") {
 					await setActive({ session: signInAttempt.createdSessionId });
@@ -70,6 +71,7 @@ const SignInForm = () => {
 					</>
 				)}
 			</form.Field>
+
 			<form.Field name="password">
 				{(field) => (
 					<>

@@ -19,4 +19,8 @@ export const signUpSchema = z.object({
 		.regex(/[^a-zA-Z0-9]/, "Password must contain a special character"),
 });
 
+export const verifyEmailFormSchema = z.object({
+	code: z.string(),
+});
+
 export type SignUpFormValues = z.infer<typeof signUpSchema>;
