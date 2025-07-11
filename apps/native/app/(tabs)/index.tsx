@@ -12,15 +12,15 @@ import { useFetchMovies } from "@/hooks/use-fetch-movies";
 const index = () => {
 	const router = useRouter();
 	const fetchMovies = useAction(api.movies.list);
-	const { movies, isPending, refetch } = useFetchMovies({
+	const { movies, isPending } = useFetchMovies({
 		fetchMovies,
-		query: "The avengers",
+		query: "Dark",
 	});
 
 	if (isPending) {
 		return (
 			<SafeAreaView className="flex-1 bg-dark py-5">
-				<Text className="text-center text-white">Loading...</Text>
+				<Text className="text-center text-black">Loading...</Text>
 			</SafeAreaView>
 		);
 	}

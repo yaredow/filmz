@@ -20,6 +20,8 @@ export const list = action({
 			headers: TMDB_CONFIG.headers,
 		});
 
+		console.log(response);
+
 		if (!response.ok) {
 			// @ts-ignore
 			throw new Error("Failed to fetch movies", response.statusText);
