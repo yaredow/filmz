@@ -7,25 +7,22 @@ import SearchBar from "@/components/search-bar";
 import { SignOutButton } from "@/components/sign-out-button";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
-import { useFetchMovies } from "@/hooks/use-fetch-movies";
 
 const index = () => {
 	const router = useRouter();
 	const fetchMovies = useAction(api.movies.list);
-	const { movies, isPending } = useFetchMovies({
-		fetchMovies,
-		query: "Dark",
-	});
+	// const { movies, isPending } = useFetchMovies({
+	// 	fetchMovies,
+	// 	query: "Dark",
+	// });
 
-	if (isPending) {
-		return (
-			<SafeAreaView className="flex-1 bg-dark py-5">
-				<Text className="text-center text-black">Loading...</Text>
-			</SafeAreaView>
-		);
-	}
-
-	console.log("Movies fetched:", movies);
+	// if (isPending) {
+	// 	return (
+	// 		<SafeAreaView className="flex-1 bg-dark py-5">
+	// 			<Text className="text-center text-black">Loading...</Text>
+	// 		</SafeAreaView>
+	// 	);
+	// }
 
 	return (
 		<SafeAreaView className="flex-1 bg-dark py-5">

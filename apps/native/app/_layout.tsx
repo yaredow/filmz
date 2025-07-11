@@ -34,6 +34,7 @@ const tokenCache = {
 			return null;
 		}
 	},
+
 	async saveToken(key: string, value: string) {
 		try {
 			return SecureStore.setItemAsync(key, value);
@@ -68,6 +69,7 @@ export default function RootLayout() {
 					<Stack>
 						<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 						<Stack.Screen name="movies/[id]" options={{ headerShown: false }} />
+						<Stack.Screen name="+not-found" />
 					</Stack>
 					<Toast position="top" />
 				</QueryClientProvider>
