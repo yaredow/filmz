@@ -1,5 +1,6 @@
 import { useRouter } from "expo-router";
 import { Image, ScrollView, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "@/components/search-bar";
 import { SignOutButton } from "@/components/sign-out-button";
 import { icons } from "@/constants/icons";
@@ -9,7 +10,7 @@ const index = () => {
 	const router = useRouter();
 
 	return (
-		<View className="flex-1 bg-dark py-5">
+		<SafeAreaView className="flex-1 bg-dark py-5">
 			<SignOutButton />
 			<Image source={images.bg} className="absolute z-0 w-full" />
 			<ScrollView
@@ -29,7 +30,7 @@ const index = () => {
 					/>
 				</View>
 			</ScrollView>
-		</View>
+		</SafeAreaView>
 	);
 };
 
