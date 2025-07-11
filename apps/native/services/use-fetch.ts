@@ -1,15 +1,22 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-const useFetch = <T>(fetchFunction: () => Promise<T>, autoRefetch: true) => {
+type UseFetchOptions = {
+	autoRefetch?: boolean;
+};
+
+const useFetch = <T>(
+	fetchFunction: () => Promise<T>,
+	options: UseFetchOptions = {},
+) => {
+	const { autoRefetch = true } = options;
 	const [data, setData] = useState<T | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | null>(null);
 
-	const fetchData = async () => {
+	const fetchData = useCallback(async () => {
+		setIsLoading(true);
+		setError(null);
 		try {
-			setIsLoading(true);
-			setError(error);
-
 			const result = await fetchFunction();
 			setData(result);
 		} catch (error) {
@@ -17,7 +24,7 @@ const useFetch = <T>(fetchFunction: () => Promise<T>, autoRefetch: true) => {
 		} finally {
 			setIsLoading(false);
 		}
-	};
+	}, [fetchFunction]);
 
 	const reset = () => {
 		setData(null);
@@ -29,9 +36,9 @@ const useFetch = <T>(fetchFunction: () => Promise<T>, autoRefetch: true) => {
 		if (autoRefetch) {
 			fetchData();
 		}
-	}, [autoRefetch]);
+	}, [autoRefetch, fetchData]);
 
-	return { data, isLoading, reset, error, refetch: fetchData };
+	return { data, isLoading, error, refetch: fetchData, reset };
 };
 
 export default useFetch;

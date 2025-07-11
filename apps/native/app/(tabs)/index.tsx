@@ -1,13 +1,31 @@
+import { api } from "@filmz/backend/convex/_generated/api";
+import { useAction } from "convex/react";
 import { useRouter } from "expo-router";
-import { Image, ScrollView, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "@/components/search-bar";
 import { SignOutButton } from "@/components/sign-out-button";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
+import { useFetchMovies } from "@/hooks/use-fetch-movies";
 
 const index = () => {
 	const router = useRouter();
+	const fetchMovies = useAction(api.movies.list);
+	const { movies, isPending, refetch } = useFetchMovies({
+		fetchMovies,
+		query: "The avengers",
+	});
+
+	if (isPending) {
+		return (
+			<SafeAreaView className="flex-1 bg-dark py-5">
+				<Text className="text-center text-white">Loading...</Text>
+			</SafeAreaView>
+		);
+	}
+
+	console.log("Movies fetched:", movies);
 
 	return (
 		<SafeAreaView className="flex-1 bg-dark py-5">

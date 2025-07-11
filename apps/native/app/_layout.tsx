@@ -1,4 +1,5 @@
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConvexReactClient } from "convex/react";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
 import { Stack } from "expo-router";
@@ -11,15 +12,19 @@ const convex = new ConvexReactClient(
 );
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
+const queryClient = new QueryClient();
+
 export default function RootLayout() {
 	return (
 		<ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
 			<ConvexProviderWithClerk client={convex} useAuth={useAuth}>
-				<Stack>
-					<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-					<Stack.Screen name="movies/[id]" options={{ headerShown: false }} />
-				</Stack>
-				<Toast position="top" />
+				<QueryClientProvider client={queryClient}>
+					<Stack>
+						<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+						<Stack.Screen name="movies/[id]" options={{ headerShown: false }} />
+					</Stack>
+					<Toast position="top" />
+				</QueryClientProvider>
 			</ConvexProviderWithClerk>
 		</ClerkProvider>
 	);
