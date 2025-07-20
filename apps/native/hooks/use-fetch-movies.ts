@@ -1,6 +1,4 @@
-import { api } from "@filmz/backend/convex/_generated/api";
 import { useQuery } from "@tanstack/react-query";
-import { useAction } from "convex/react";
 
 type Props = {
 	query?: string;

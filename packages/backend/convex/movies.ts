@@ -1,11 +1,12 @@
 import { v } from "convex/values";
-import { action, query } from "./_generated/server";
+
+import { action } from "./_generated/server";
 import { TMDB_CONFIG } from "./constants";
 
 export const list = action({
 	args: { query: v.string() },
 	handler: async (ctx, args) => {
-		const user = ctx.auth.getUserIdentity;
+		const user = await ctx.auth.getUserIdentity();
 
 		if (!user) {
 			throw new Error("Unauthorized: User must be logged in to fetch movies.");
@@ -19,8 +20,6 @@ export const list = action({
 			method: "GET",
 			headers: TMDB_CONFIG.headers,
 		});
-
-		console.log(response);
 
 		if (!response.ok) {
 			// @ts-ignore

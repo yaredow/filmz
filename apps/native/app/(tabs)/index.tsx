@@ -1,7 +1,7 @@
 import { api } from "@filmz/backend/convex/_generated/api";
 import { useAction } from "convex/react";
 import { useRouter } from "expo-router";
-import { Image, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "@/components/search-bar";
 import { SignOutButton } from "@/components/sign-out-button";
@@ -11,18 +11,6 @@ import { images } from "@/constants/images";
 const index = () => {
 	const router = useRouter();
 	const fetchMovies = useAction(api.movies.list);
-	// const { movies, isPending } = useFetchMovies({
-	// 	fetchMovies,
-	// 	query: "Dark",
-	// });
-
-	// if (isPending) {
-	// 	return (
-	// 		<SafeAreaView className="flex-1 bg-dark py-5">
-	// 			<Text className="text-center text-black">Loading...</Text>
-	// 		</SafeAreaView>
-	// 	);
-	// }
 
 	return (
 		<SafeAreaView className="flex-1 bg-dark py-5">
