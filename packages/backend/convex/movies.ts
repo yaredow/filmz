@@ -14,7 +14,7 @@ export const list = action({
 
 		const endpoint = args.query
 			? `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURIComponent(args.query)}`
-			: `${TMDB_CONFIG.BASE_URL}/discover/movies?sort_by=popularity.desc`;
+			: `${TMDB_CONFIG.BASE_URL}/discover/movie?sort_by=popularity.desc`;
 
 		const response = await fetch(endpoint, {
 			method: "GET",
@@ -22,11 +22,15 @@ export const list = action({
 		});
 
 		if (!response.ok) {
-			// @ts-ignore
-			throw new Error("Failed to fetch movies", response.statusText);
+			throw new Error(`Failed to fetch movies: ${response.statusText}`);
 		}
 
 		const data = await response.json();
+
+		if (!data || !data.results) {
+			throw new Error("No movies found or invalid response format.");
+		}
+
 		return data.results;
 	},
 });

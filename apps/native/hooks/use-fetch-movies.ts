@@ -11,7 +11,7 @@ export const useFetchMovies = ({ query, fetchMovies }: Props) => {
 		isPending,
 		refetch,
 	} = useQuery({
-		queryKey: ["movies"],
+		queryKey: ["movies", query],
 		queryFn: async () => {
 			const data = await fetchMovies({ query: query || "" });
 
