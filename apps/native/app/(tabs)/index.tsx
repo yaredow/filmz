@@ -14,10 +14,8 @@ const index = () => {
 	const fetchMovies = useAction(api.movies.list);
 	const { movies, isPending, refetch } = useFetchMovies({
 		fetchMovies,
-		query: "Inception",
+		query: "Lucy",
 	});
-
-	console.log({ movies });
 
 	if (isPending) {
 		return <Text>Loading...</Text>;

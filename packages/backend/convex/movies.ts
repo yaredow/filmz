@@ -3,13 +3,18 @@ import { v } from "convex/values";
 import { action } from "./_generated/server";
 import { TMDB_CONFIG } from "./constants";
 
+const api = process.env.TMDB_API_KEY;
+
 export const list = action({
 	args: { query: v.string() },
 	handler: async (ctx, args) => {
 		const user = await ctx.auth.getUserIdentity();
+		console.log("API KEY", api);
 
 		if (!user) {
-			throw new Error("Unauthorized: User must be logged in to fetch movies.");
+			return new Error(
+				"User not authenticated. Please sign in to access this feature.",
+			);
 		}
 
 		const endpoint = args.query

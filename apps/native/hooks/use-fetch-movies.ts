@@ -14,6 +14,7 @@ export const useFetchMovies = ({ query, fetchMovies }: Props) => {
 		queryKey: ["movies", query],
 		queryFn: async () => {
 			const data = await fetchMovies({ query: query || "" });
+			console.log(data);
 
 			if (!data) {
 				throw new Error("Failed to fetch movies");
