@@ -10,6 +10,7 @@ import {
 	View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import MovieCard from "@/components/movie-card";
 import SearchBar from "@/components/search-bar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
@@ -47,7 +48,7 @@ const index = () => {
 							</Text>
 							<FlatList
 								data={movies}
-								renderItem={({ item }) => <Text>{item.title}</Text>}
+								renderItem={({ item }) => <MovieCard {...item} />}
 								keyExtractor={(item) => item.id}
 								numColumns={3}
 								columnWrapperStyle={{
