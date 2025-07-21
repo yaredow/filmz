@@ -10,11 +10,11 @@ export const useFetchMovies = ({ query, fetchMovies }: Props) => {
 		data: movies,
 		isPending,
 		refetch,
+		error,
 	} = useQuery({
 		queryKey: ["movies", query],
 		queryFn: async () => {
 			const data = await fetchMovies({ query: query || "" });
-			console.log(data);
 
 			if (!data) {
 				throw new Error("Failed to fetch movies");
@@ -24,5 +24,5 @@ export const useFetchMovies = ({ query, fetchMovies }: Props) => {
 		},
 	});
 
-	return { movies, isPending, refetch };
+	return { movies, isPending, refetch, error };
 };
