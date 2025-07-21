@@ -1,7 +1,14 @@
 import { api } from "@filmz/backend/convex/_generated/api";
 import { useAction } from "convex/react";
 import { useRouter } from "expo-router";
-import { ActivityIndicator, Image, ScrollView, Text, View } from "react-native";
+import {
+	ActivityIndicator,
+	FlatList,
+	Image,
+	ScrollView,
+	Text,
+	View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "@/components/search-bar";
 import { icons } from "@/constants/icons";
@@ -13,7 +20,7 @@ const index = () => {
 	const fetchMovies = useAction(api.movies.list);
 	const { movies, isPending, error, refetch } = useFetchMovies({
 		fetchMovies,
-		query: "Lucy",
+		query: "",
 	});
 
 	return (
@@ -34,9 +41,25 @@ const index = () => {
 				) : (
 					<View className="mt-5 flex-1">
 						<SearchBar onPress={() => {}} placeholder="Search for movies" />
-						<Text className="mt-5 mb-3 font-bold text-gray-900 text-lg">
-							Latest Movies
-						</Text>
+						<>
+							<Text className="mt-5 mb-3 font-bold text-gray-900 text-lg">
+								Latest Movies
+							</Text>
+							<FlatList
+								data={movies}
+								renderItem={({ item }) => <Text>{item.title}</Text>}
+								keyExtractor={(item) => item.id}
+								numColumns={3}
+								columnWrapperStyle={{
+									justifyContent: "flex-start",
+									gap: 20,
+									paddingRight: 5,
+									marginBottom: 10,
+								}}
+								className="mt-2 pb-32"
+								scrollEnabled={false}
+							/>
+						</>
 					</View>
 				)}
 			</ScrollView>
