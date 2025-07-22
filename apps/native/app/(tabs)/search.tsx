@@ -1,7 +1,7 @@
 import { api } from "@filmz/backend/convex/_generated/api";
 import { useAction } from "convex/react";
 import { useRouter } from "expo-router";
-import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, View } from "react-native";
 import MovieCard from "@/components/movie-card";
 import { images } from "@/constants/images";
 import { useFetchMovies } from "@/hooks/use-fetch-movies";
