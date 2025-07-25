@@ -1,6 +1,5 @@
 import { api } from "@filmz/backend/convex/_generated/api";
 import { useAction } from "convex/react";
-import { useRouter } from "expo-router";
 import {
 	ActivityIndicator,
 	FlatList,
@@ -17,9 +16,8 @@ import { images } from "@/constants/images";
 import { useFetchMovies } from "@/hooks/use-fetch-movies";
 
 const index = () => {
-	const router = useRouter();
 	const fetchMovies = useAction(api.movies.list);
-	const { movies, isPending, error, refetch } = useFetchMovies({
+	const { movies, isPending, error } = useFetchMovies({
 		fetchMovies,
 		query: "",
 	});

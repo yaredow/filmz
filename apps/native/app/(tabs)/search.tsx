@@ -1,7 +1,14 @@
 import { api } from "@filmz/backend/convex/_generated/api";
 import { useAction } from "convex/react";
-import { useState } from "react";
-import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
+import { useEffect, useState } from "react";
+import {
+	ActivityIndicator,
+	FlatList,
+	Image,
+	SafeAreaView,
+	Text,
+	View,
+} from "react-native";
 import MovieCard from "@/components/movie-card";
 import SearchBar from "@/components/search-bar";
 import { icons } from "@/constants/icons";
@@ -17,9 +24,15 @@ const search = () => {
 		query: searchQuery,
 	});
 
-	if (isPending) {
-		return <ActivityIndicator size="large" color="#0000ff" />;
-	}
+	useEffect(() => {
+		const timeOutId = setTimeout(async () => {
+			if (searchQuery.trim()) {
+				await refetch();
+			}
+		}, 500);
+
+		return () => clearTimeout(timeOutId);
+	}, [searchQuery, refetch]);
 
 	return (
 		<View className="flex-1 bg-primary">
