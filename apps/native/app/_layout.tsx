@@ -11,10 +11,11 @@ import Toast from "react-native-toast-message";
 
 import "../global.css";
 
+const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
 const convex = new ConvexReactClient(
 	process.env.EXPO_PUBLIC_CONVEX_URL as string,
 );
-const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 const queryClient = new QueryClient();
 
@@ -56,7 +57,7 @@ export default function RootLayout() {
 	}, [loaded]);
 
 	if (!loaded) {
-		return null; // or a loading spinner
+		return null;
 	}
 
 	return (

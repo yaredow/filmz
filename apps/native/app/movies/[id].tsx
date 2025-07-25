@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 
 const Details = () => {
 	return (
-		<View>
+		<View className="m-0 flex-1">
 			<Text>Details</Text>
 		</View>
 	);

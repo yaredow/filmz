@@ -24,3 +24,9 @@ export const verifyEmailFormSchema = z.object({
 });
 
 export type SignUpFormValues = z.infer<typeof signUpSchema>;
+
+export const forgetPasswordSchema = z.object({
+	email: z.string().email(),
+});
+
+export type ForgetPasswordValues = z.infer<typeof forgetPasswordSchema>;
